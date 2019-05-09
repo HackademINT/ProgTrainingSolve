@@ -23,15 +23,19 @@ function update_flag(challenge) {
   return challenge
 }
 
-function main() {
+function create_challenge() {
   var challenge = new Object();
   challenge.flag = '';
   challenge.hash = '';
   challenge.new = '';
   challenge.stop = false;
-  while (! challenge.stop) {
+  return challenge
+}
+
+function main() {
+  var challenge = create_challenge();
+  while (! update_flag(challenge).stop) {
     process.stdout.write(challenge.new);
-    challenge = update_flag(challenge);
   }
   process.stdout.write('\n');
   return challenge.flag
